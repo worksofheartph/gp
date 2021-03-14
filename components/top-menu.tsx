@@ -183,14 +183,14 @@ export default function TopMenu() {
         .menu-toggle {
           position: absolute;
           top: 6.25vh;
-          right: 1em;
+          right: 0;
           transform: translateY(-50%);
           display: flex;
           flex-direction: column;
           align-items: flex-end;
           color: var(--teal);
           font-size: 80%;
-          padding-right: 2em;
+          padding-right: calc(2% - 0.5em);
         }
 
         .issue-no {
