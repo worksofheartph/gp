@@ -42,3 +42,25 @@ button:hover {
   background: var(--teal);
   color: var(--cream);
 }
+
+.bg-cream { background-color: var(--cream); }
+.bg-navy { background-color: var(--navy); }
+.bg-teal { background-color: var(--teal); }
+.bg-orange { background-color: var(--orange); }
+.bg-light-blue { background-color: var(--light-blue); }
+.bg-green { background-color: var(--green); }
+.bg-blue { background-color: var(--blue); }
+.bg-gold { background-color: var(--gold); }
+.bg-magenta { background-color: var(--magenta); }
+.bg-baby-blue { background-color: var(--baby-blue); }
+
+.fg-cream { color: var(--cream); }
+.fg-navy { color: var(--navy); }
+.fg-teal { color: var(--teal); }
+.fg-orange { color: var(--orange); }
+.fg-light-blue { color: var(--light-blue); }
+.fg-green { color: var(--green); }
+.fg-blue { color: var(--blue); }
+.fg-gold { color: var(--gold); }
+.fg-magenta { color: var(--magenta); }
+.fg-baby-blue { color: var(--baby-blue); }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import TopMenu from '../components/top-menu';
 import Logo from '../svg/logo.svg';
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
         </div>
         <Logo className="logo-flipped" />
       </div>
+      <TopMenu />
       <style jsx>{`
         .container {
           background: var(--navy);
@@ -32,8 +34,10 @@ export default function Home() {
           align-items: center;
         }
         .container[data-image-bg='true'] {
-          background:
-            linear-gradient(rgba(11, 31, 60, 0.2), rgba(11, 31, 60, 0.2)),
+          background: linear-gradient(
+              rgba(11, 31, 60, 0.2),
+              rgba(11, 31, 60, 0.2)
+            ),
             url(/images/home-bg.jpg) no-repeat center center;
           background-size: cover;
         }
