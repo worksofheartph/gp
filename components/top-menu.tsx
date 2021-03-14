@@ -1,11 +1,12 @@
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function TopMenu() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const [toggled, setToggled] = useState(false);
+  const toggleMenu = () => setToggled(!toggled);
   return (
     <>
-      <nav className="menu" data-open={isOpen}>
+      <nav className="menu" data-toggled={toggled} onClick={toggleMenu}>
         <div className="menu-square">
           <div className="bg-teal">Galing Mindanao</div>
         </div>
@@ -25,9 +26,9 @@ export default function TopMenu() {
           </div>
         </div>
         <div className="menu-square">
-          <a className="article bg-magenta" href="#">
-            Uncurated Studio
-          </a>
+          <Link href="/issue-2-galing-mindanao/uncurated-studio">
+            <a className="article bg-magenta">Uncurated Studio</a>
+          </Link>
         </div>
         <div className="menu-square">
           <a className="article bg-green" href="#">
@@ -52,7 +53,7 @@ export default function TopMenu() {
         href="#"
         className="menu-toggle"
         onClick={toggleMenu}
-        data-open={isOpen}
+        data-toggled={toggled}
       >
         <div className="issue-no">
           <span>2</span>
@@ -64,7 +65,7 @@ export default function TopMenu() {
           position: absolute;
           top: 0;
           left: 0;
-          width: 100vw;
+          width: 100%;
           height: 100vh;
           display: grid;
           grid-template-columns: 4fr 2fr 1fr 1fr;
@@ -93,16 +94,16 @@ export default function TopMenu() {
 
         .menu-square:nth-child(odd) > * {
           transition: transform var(--swipe-duration) ease-out;
-          transform: translateX(100%);
+          transform: translateX(101%);
         }
-        .menu[data-open='true'] > .menu-square:nth-child(odd) > * {
+        .menu[data-toggled='true'] > .menu-square:nth-child(odd) > * {
           transform: translateX(0);
         }
         .menu-square:nth-child(even) > * {
           transition: transform var(--swipe-duration) ease-out;
-          transform: translateY(-100%);
+          transform: translateY(-101%);
         }
-        .menu[data-open='true'] > .menu-square:nth-child(even) > * {
+        .menu[data-toggled='true'] > .menu-square:nth-child(even) > * {
           transform: translateY(0);
         }
 
@@ -157,25 +158,25 @@ export default function TopMenu() {
           transition-delay: calc(0 * var(--swipe-duration));
         }
 
-        .menu[data-open='false'] > .menu-square:nth-child(1) > * {
+        .menu[data-toggled='false'] > .menu-square:nth-child(1) > * {
           transition-delay: calc(0 * var(--swipe-duration));
         }
-        .menu[data-open='false'] > .menu-square:nth-child(2) > * {
+        .menu[data-toggled='false'] > .menu-square:nth-child(2) > * {
           transition-delay: calc(1 * var(--swipe-duration));
         }
-        .menu[data-open='false'] > .menu-square:nth-child(3) > * {
+        .menu[data-toggled='false'] > .menu-square:nth-child(3) > * {
           transition-delay: calc(2 * var(--swipe-duration));
         }
-        .menu[data-open='false'] > .menu-square:nth-child(4) > * {
+        .menu[data-toggled='false'] > .menu-square:nth-child(4) > * {
           transition-delay: calc(3 * var(--swipe-duration));
         }
-        .menu[data-open='false'] > .menu-square:nth-child(5) > * {
+        .menu[data-toggled='false'] > .menu-square:nth-child(5) > * {
           transition-delay: calc(4 * var(--swipe-duration));
         }
-        .menu[data-open='false'] > .menu-square:nth-child(6) > * {
+        .menu[data-toggled='false'] > .menu-square:nth-child(6) > * {
           transition-delay: calc(5 * var(--swipe-duration));
         }
-        .menu[data-open='false'] > .menu-square:nth-child(7) > * {
+        .menu[data-toggled='false'] > .menu-square:nth-child(7) > * {
           transition-delay: calc(6 * var(--swipe-duration));
         }
 
@@ -209,7 +210,7 @@ export default function TopMenu() {
           transform: rotate(-45deg);
         }
 
-        .menu-toggle[data-open='true'] > .issue-no {
+        .menu-toggle[data-toggled='true'] > .issue-no {
           color: var(--baby-blue);
         }
 

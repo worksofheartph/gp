@@ -1,5 +1,5 @@
+import TopMenu from 'components/top-menu';
 import { useState } from 'react';
-import TopMenu from '../components/top-menu';
 import Logo from '../svg/logo.svg';
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
           background: var(--navy);
           color: var(--cream);
           height: 100vh;
-          width: 100vw;
+          width: 100%;
           display: flex;
           align-items: center;
         }
