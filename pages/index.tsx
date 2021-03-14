@@ -1,29 +1,37 @@
-import TopMenu from 'components/top-menu';
+import { Spacer } from 'components/spacer';
+import Spread from 'components/spread';
 import { useState } from 'react';
 import Logo from '../svg/logo.svg';
+import Link from 'next/link';
 
 export default function Home() {
   const [buttonHovered, setButtonHovered] = useState(false);
   return (
     <>
       <div className="container" data-image-bg={buttonHovered}>
-        <Logo />
-        <div className="content">
-          <p>
-            <strong>From the provinces. Talents of the provinces.</strong> A
-            zine showcasing the stories and works of probinsyano designers from
-            the Philippines.
-          </p>
-          <button
-            onMouseEnter={() => setButtonHovered(true)}
-            onMouseLeave={() => setButtonHovered(false)}
-          >
-            READ ISSUE NO. 2: GALING MINDANAO
-          </button>
+        <div className="stickers">
+          <Logo />
+          <Spacer />
+          <Logo className="logo-flipped" />
         </div>
-        <Logo className="logo-flipped" />
+        <Spread menuLabel>
+          <div className="content">
+            <p>
+              <strong>From the provinces. Talents of the provinces.</strong> A
+              zine showcasing the stories and works of probinsyano designers
+              from the Philippines.
+            </p>
+            <Link href="/issue-2-galing-mindanao/uncurated-studio">
+              <button
+                onMouseEnter={() => setButtonHovered(true)}
+                onMouseLeave={() => setButtonHovered(false)}
+              >
+                READ ISSUE NO. 2: GALING MINDANAO
+              </button>
+            </Link>
+          </div>
+        </Spread>
       </div>
-      <TopMenu />
       <style jsx>{`
         .container {
           background: var(--navy);
@@ -35,21 +43,31 @@ export default function Home() {
         }
         .container[data-image-bg='true'] {
           background: linear-gradient(
-              rgba(11, 31, 60, 0.2),
-              rgba(11, 31, 60, 0.2)
+              rgba(11, 31, 60, 0.25),
+              rgba(11, 31, 60, 0.25)
             ),
             url(/images/home-bg.jpg) no-repeat center center;
           background-size: cover;
         }
-        :global(.logo-flipped) {
-          transform: rotate(180deg);
-        }
+
+        .stickers,
         .content {
-          flex: 1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
           display: flex;
-          flex-direction: column;
           justify-content: center;
           align-items: center;
+        }
+
+        .stickers :global(.logo-flipped) {
+          transform: rotate(180deg);
+        }
+
+        .content {
+          flex-direction: column;
         }
         .content > p {
           text-align: center;

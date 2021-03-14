@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function TopMenu() {
+type TopMenuProps = {
+  label?: boolean;
+};
+
+export default function TopMenu({ label }: TopMenuProps) {
   const [toggled, setToggled] = useState(false);
   const toggleMenu = () => setToggled(!toggled);
   return (
@@ -54,11 +58,12 @@ export default function TopMenu() {
         className="menu-toggle"
         onClick={toggleMenu}
         data-toggled={toggled}
+        data-label={label}
       >
         <div className="issue-no">
           <span>2</span>
         </div>
-        <div>Galing Mindanao</div>
+        <div className="toggle-label">Galing Mindanao</div>
       </a>
       <style jsx>{`
         .menu {
@@ -66,7 +71,7 @@ export default function TopMenu() {
           top: 0;
           left: 0;
           width: 100%;
-          height: 100vh;
+          height: 100%;
           display: grid;
           grid-template-columns: 4fr 2fr 1fr 1fr;
           grid-template-rows: 1fr 1fr 2fr 4fr;
@@ -182,9 +187,8 @@ export default function TopMenu() {
 
         .menu-toggle {
           position: absolute;
-          top: 6.25vh;
+          top: 4%;
           right: 0;
-          transform: translateY(-50%);
           display: flex;
           flex-direction: column;
           align-items: flex-end;
@@ -195,10 +199,10 @@ export default function TopMenu() {
 
         .issue-no {
           position: relative;
-          width: 1.2em;
-          height: 1.2em;
+          width: 21px;
+          height: 21px;
           text-align: center;
-          line-height: 1.2em;
+          line-height: 21px;
           transform: rotate(45deg);
           margin-bottom: 1em;
           background: var(--teal);
@@ -211,7 +215,17 @@ export default function TopMenu() {
         }
 
         .menu-toggle[data-toggled='true'] > .issue-no {
+          background-color: var(--teal);
+          border-color: var(--teal);
           color: var(--baby-blue);
+        }
+
+        .toggle-label {
+          display: none;
+        }
+        .menu-toggle[data-label='true'] > .toggle-label,
+        .menu-toggle[data-toggled='true'] > .toggle-label {
+          display: block;
         }
 
         .issue-overview {

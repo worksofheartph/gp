@@ -1,6 +1,8 @@
-import TopMenu from 'components/top-menu';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { usePage } from 'stores';
+import LogoSmall from '../svg/logo-small.svg';
+import Spread from './spread';
 
 type ArticleProps = {
   color: string;
@@ -11,82 +13,70 @@ export default function Article({
   children,
 }: React.PropsWithChildren<ArticleProps>) {
   const current = usePage((state) => state.current);
-  return (
-    <div className="article">
-      <Spread first={current === 0}>{children}</Spread>
-      <style jsx>{`
-        .article {
-          --article-color: var(--${color});
-        }
-      `}</style>
-    </div>
-  );
-}
-
-type SpreadProps = {
-  first?: boolean;
-};
-
-function Spread({ first, children }: React.PropsWithChildren<SpreadProps>) {
   const next = usePage((state) => state.next);
   const prev = usePage((state) => state.prev);
   const setTotal = usePage((state) => state.setTotal);
+  const firstPage = current === 0;
   useEffect(() => setTotal(children.length), [setTotal]);
   return (
-    <>
-      <div className="bg bg-navy">
-        <div className="container" data-first={first}>
-          <div className="content">{children}</div>
-          <div className="prev" onClick={prev}></div>
-          <div className="next" onClick={next}></div>
-
-          <TopMenu />
-        </div>
-      </div>
+    <div className="article">
+      <Spread
+        background={
+          <>
+            <div className="bg" />
+            <div className="home">
+              <Link href="/">
+                <a>
+                  <LogoSmall />
+                </a>
+              </Link>
+            </div>
+            <div className="prev" onClick={prev}></div>
+            <div className="next" onClick={next}></div>
+          </>
+        }
+      >
+        {children}
+      </Spread>
       <style jsx>{`
-        .bg {
-          width: 100%;
+        .article {
+          --article-color: var(--${color});
           height: 100vh;
+          background-color: var(--navy);
+        }
+
+        .bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: ${
+            firstPage ? 'var(--cream)' : 'var(--article-color)'
+          };
+          transition: background-color 1s ease-in-out;
+        }
+
+        .home {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4%;
+          height: 10%;
+        }
+        .home > a {
+          height: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
-          overflow: hidden;
+          color: ${firstPage ? 'var(--teal)' : 'var(--cream)'};
+          transition: color 1s ease-in-out;
         }
-        .container {
-          flex: 1;
-          position: relative;
-          background: var(--article-color);
-          transition: background 1s ease-in-out;
-        }
-        .container[data-first='true'] {
-          background: var(--cream);
-        }
-        .content {
-          position: absolute;
-          top: 0;
-          left: 4%;
-          right: 4%;
-          bottom: 0;
-          font-size: 1vw;
-          transform-style: preserve-3d;
-          perspective: 150vw;
-          isolation: isolate;
-        }
-        @media (min-aspect-ratio: 1152 / 700) {
-          .container {
-            max-width: calc(100vh * 1152 / 700);
-            height: 100vh;
-          }
-        }
-        @media (max-aspect-ratio: 1152 / 700) {
-          .container {
-            padding-top: calc(100% / 1152 * 700);
-          }
-        }
+
         .prev,
         .next {
           position: absolute;
-          top: 0;
+          top: 10%;
           width: 4%;
           bottom: 0;
           cursor: pointer;
@@ -97,7 +87,13 @@ function Spread({ first, children }: React.PropsWithChildren<SpreadProps>) {
         .next {
           right: 0;
         }
+
+        :global(.menu-toggle > .issue-no) {
+          color: var(--cream);
+          background-color: ${firstPage ? 'var(--teal)' : 'transparent'};
+          border: 1px solid ${firstPage ? 'var(--teal)' : 'var(--cream)'};
+        }
       `}</style>
-    </>
+    </div>
   );
 }
