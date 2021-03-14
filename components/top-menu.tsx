@@ -7,27 +7,7 @@ export default function TopMenu() {
     <>
       <nav className="menu" data-open={isOpen}>
         <div className="menu-square">
-          <div className="bg-baby-blue"></div>
-        </div>
-        <div className="menu-square">
-          <a className="bg-navy" href="#">
-            Instagram
-          </a>
-        </div>
-        <div className="menu-square">
-          <a className="article bg-green" href="#">
-            The Story Machine
-          </a>
-        </div>
-        <div className="menu-square">
-          <a className="article bg-blue" href="#">
-            Megan Palero
-          </a>
-        </div>
-        <div className="menu-square">
-          <a className="article bg-magenta" href="#">
-            Uncurated Studio
-          </a>
+          <div className="bg-teal">Galing Mindanao</div>
         </div>
         <div className="menu-square">
           <div className="bg-cream fg-navy">
@@ -45,7 +25,27 @@ export default function TopMenu() {
           </div>
         </div>
         <div className="menu-square">
-          <div className="bg-teal">Galing Mindanao</div>
+          <a className="article bg-magenta" href="#">
+            Uncurated Studio
+          </a>
+        </div>
+        <div className="menu-square">
+          <a className="article bg-green" href="#">
+            The Story Machine
+          </a>
+        </div>
+        <div className="menu-square">
+          <a className="article bg-blue" href="#">
+            Megan Palero
+          </a>
+        </div>
+        <div className="menu-square">
+          <a className="bg-navy" href="#">
+            Instagram
+          </a>
+        </div>
+        <div className="menu-square">
+          <div className="bg-baby-blue"></div>
         </div>
       </nav>
       <a
@@ -107,76 +107,76 @@ export default function TopMenu() {
         }
 
         .menu-square:nth-child(1) {
-          z-index: 7;
-          grid-area: 1 / 4 / 2 / 5;
+          z-index: 1;
+          grid-area: 1 / 1 / 5 / 2;
         }
         .menu-square:nth-child(2) {
-          z-index: 6;
-          grid-area: 2 / 4 / 3 / 5;
+          z-index: 2;
+          grid-area: 4 / 2 / 5 / 5;
         }
         .menu-square:nth-child(3) {
-          z-index: 5;
-          grid-area: 1 / 3 / 3 / 4;
+          z-index: 3;
+          grid-area: 1 / 2 / 4 / 3;
         }
         .menu-square:nth-child(4) {
           z-index: 4;
           grid-area: 3 / 3 / 4 / 5;
         }
         .menu-square:nth-child(5) {
-          z-index: 3;
-          grid-area: 1 / 2 / 4 / 3;
+          z-index: 5;
+          grid-area: 1 / 3 / 3 / 4;
         }
         .menu-square:nth-child(6) {
-          z-index: 2;
-          grid-area: 4 / 2 / 5 / 5;
+          z-index: 6;
+          grid-area: 2 / 4 / 3 / 5;
         }
         .menu-square:nth-child(7) {
-          z-index: 1;
-          grid-area: 1 / 1 / 5 / 2;
+          z-index: 7;
+          grid-area: 1 / 4 / 2 / 5;
         }
 
         .menu-square:nth-child(1) > * {
-          transition-delay: calc(0 * var(--swipe-duration));
+          transition-delay: calc(6 * var(--swipe-duration));
         }
         .menu-square:nth-child(2) > * {
-          transition-delay: calc(1 * var(--swipe-duration));
+          transition-delay: calc(5 * var(--swipe-duration));
         }
         .menu-square:nth-child(3) > * {
-          transition-delay: calc(2 * var(--swipe-duration));
+          transition-delay: calc(4 * var(--swipe-duration));
         }
         .menu-square:nth-child(4) > * {
           transition-delay: calc(3 * var(--swipe-duration));
         }
         .menu-square:nth-child(5) > * {
-          transition-delay: calc(4 * var(--swipe-duration));
+          transition-delay: calc(2 * var(--swipe-duration));
         }
         .menu-square:nth-child(6) > * {
-          transition-delay: calc(5 * var(--swipe-duration));
+          transition-delay: calc(1 * var(--swipe-duration));
         }
         .menu-square:nth-child(7) > * {
-          transition-delay: calc(6 * var(--swipe-duration));
+          transition-delay: calc(0 * var(--swipe-duration));
         }
 
         .menu[data-open='false'] > .menu-square:nth-child(1) > * {
-          transition-delay: calc(6 * var(--swipe-duration));
+          transition-delay: calc(0 * var(--swipe-duration));
         }
         .menu[data-open='false'] > .menu-square:nth-child(2) > * {
-          transition-delay: calc(5 * var(--swipe-duration));
+          transition-delay: calc(1 * var(--swipe-duration));
         }
         .menu[data-open='false'] > .menu-square:nth-child(3) > * {
-          transition-delay: calc(4 * var(--swipe-duration));
+          transition-delay: calc(2 * var(--swipe-duration));
         }
         .menu[data-open='false'] > .menu-square:nth-child(4) > * {
           transition-delay: calc(3 * var(--swipe-duration));
         }
         .menu[data-open='false'] > .menu-square:nth-child(5) > * {
-          transition-delay: calc(2 * var(--swipe-duration));
+          transition-delay: calc(4 * var(--swipe-duration));
         }
         .menu[data-open='false'] > .menu-square:nth-child(6) > * {
-          transition-delay: calc(1 * var(--swipe-duration));
+          transition-delay: calc(5 * var(--swipe-duration));
         }
         .menu[data-open='false'] > .menu-square:nth-child(7) > * {
-          transition-delay: calc(0 * var(--swipe-duration));
+          transition-delay: calc(6 * var(--swipe-duration));
         }
 
         .menu-toggle {
