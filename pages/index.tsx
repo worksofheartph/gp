@@ -1,10 +1,20 @@
+import RandomStickers from 'components/random-stickers';
 import { Spacer } from 'components/spacer';
 import Spread from 'components/spread';
-import { useState } from 'react';
-import Logo from '../svg/logo.svg';
 import Link from 'next/link';
+import { useState } from 'react';
+import { getRandomStickers } from 'utils';
+import Logo from '../svg/logo.svg';
 
-export default function Home() {
+export async function getStaticProps() {
+  return {
+    props: {
+      stickers: await getRandomStickers(20),
+    },
+  };
+}
+
+export default function Home({ stickers }) {
   const [buttonHovered, setButtonHovered] = useState(false);
   return (
     <>
@@ -13,6 +23,7 @@ export default function Home() {
           <Logo />
           <Spacer />
           <Logo className="logo-flipped" />
+          <RandomStickers stickers={stickers} />
         </div>
         <Spread menuLabel>
           <div className="content">

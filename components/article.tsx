@@ -2,14 +2,17 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { usePage } from 'stores';
 import LogoSmall from '../svg/logo-small.svg';
+import RandomStickers from './random-stickers';
 import Spread from './spread';
 
 type ArticleProps = {
   color: string;
+  stickers: Array<any>;
 };
 
 export default function Article({
   color,
+  stickers,
   children,
 }: React.PropsWithChildren<ArticleProps>) {
   const current = usePage((state) => state.current);
@@ -20,6 +23,7 @@ export default function Article({
   useEffect(() => setTotal(children.length), [setTotal]);
   return (
     <div className="article">
+      <RandomStickers stickers={stickers} />
       <Spread
         background={
           <>
@@ -43,6 +47,7 @@ export default function Article({
           --article-color: var(--${color});
           height: 100vh;
           background-color: var(--navy);
+          position: relative;
         }
 
         .bg {
@@ -51,9 +56,9 @@ export default function Article({
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: ${
-            firstPage ? 'var(--cream)' : 'var(--article-color)'
-          };
+          background-color: ${firstPage
+            ? 'var(--cream)'
+            : 'var(--article-color)'};
           transition: background-color 1s ease-in-out;
         }
 

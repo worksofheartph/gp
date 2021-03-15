@@ -1,11 +1,20 @@
 import Article from 'components/article';
 import Page, { TitlePage } from 'components/page';
 import React from 'react';
+import { getRandomStickers } from 'utils';
 
-export default function UncuratedStudio() {
+export async function getStaticProps() {
+  return {
+    props: {
+      stickers: await getRandomStickers(20),
+    },
+  };
+}
+
+export default function UncuratedStudio({ stickers }) {
   return (
     <>
-      <Article color="magenta">
+      <Article color="magenta" stickers={stickers}>
         <TitlePage
           number={1}
           title="Uncurated Studio"
