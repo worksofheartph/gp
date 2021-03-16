@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { Children, useEffect } from 'react';
 import { usePage } from 'stores';
 import LogoSmall from '../svg/logo-small.svg';
 import RandomStickers from './random-stickers';
@@ -20,7 +20,7 @@ export default function Article({
   const prev = usePage((state) => state.prev);
   const setTotal = usePage((state) => state.setTotal);
   const firstPage = current === 0;
-  useEffect(() => setTotal(children.length), [setTotal]);
+  useEffect(() => setTotal(Children.count(children)), [setTotal]);
   return (
     <div className="article">
       <RandomStickers stickers={stickers} />
